@@ -1,0 +1,265 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f0f2f5;
+  color: #1a1a2e;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0f0f1a;
+    color: #e0e0e0;
+  }
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* App */
+.app {
+  width: 100%;
+  max-width: 560px;
+}
+
+.app__title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #5c6bc0;
+  margin: 0 0 1.5rem;
+}
+
+.app__card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+  .app__card {
+    background: #1e1e2e;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* AddTodo */
+.add-todo {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid #e8e8f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .add-todo {
+    border-bottom-color: #2e2e4e;
+  }
+}
+
+.add-todo__input {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+}
+
+.add-todo__input::placeholder {
+  color: #aaa;
+}
+
+.add-todo__btn {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0;
+  background: #5c6bc0;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.add-todo__btn:hover:not(:disabled) {
+  background: #4a5ab5;
+}
+
+.add-todo__btn:disabled {
+  background: #c5cae9;
+  cursor: not-allowed;
+}
+
+/* TodoList */
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* TodoItem */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid #f0f0f8;
+  transition: background 0.15s;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-item:hover {
+  background: #f8f8ff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .todo-item {
+    border-bottom-color: #2a2a3e;
+  }
+  .todo-item:hover {
+    background: #252535;
+  }
+}
+
+.todo-item__check {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  accent-color: #5c6bc0;
+  flex-shrink: 0;
+}
+
+.todo-item__label {
+  flex: 1;
+  cursor: pointer;
+  word-break: break-word;
+  font-size: 0.95rem;
+}
+
+.todo-item--done .todo-item__label {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.todo-item__delete {
+  padding: 0.2rem 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #ccc;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s, background 0.15s;
+}
+
+.todo-item:hover .todo-item__delete {
+  opacity: 1;
+}
+
+.todo-item__delete:hover {
+  color: #e53935;
+  background: #fde8e8;
+}
+
+/* Empty */
+.empty {
+  text-align: center;
+  color: #aaa;
+  padding: 2rem;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* FilterBar */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid #e8e8f0;
+  font-size: 0.85rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .filter-bar {
+    border-top-color: #2e2e4e;
+  }
+}
+
+.filter-bar__count {
+  color: #888;
+  white-space: nowrap;
+}
+
+.filter-bar__buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.filter-bar__btn {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.82rem;
+  border: 1px solid #e0e0f0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.filter-bar__btn:hover {
+  border-color: #5c6bc0;
+  color: #5c6bc0;
+}
+
+.filter-bar__btn--active {
+  border-color: #5c6bc0;
+  color: #5c6bc0;
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  .filter-bar__btn {
+    border-color: #3a3a5e;
+  }
+}
+
+.filter-bar__clear {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.82rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #e53935;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.filter-bar__clear:hover {
+  background: #fde8e8;
+}
